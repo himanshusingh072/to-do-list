@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>To-Do List</title>
+</head>
+<body>
+    <div id="app">
+        <h1>To-Do List</h1>
+        <div>
+            <h2>Pending Tasks</h2>
+            <ul id="pending-tasks"></ul>
+        </div>
+        <div class="completed">
+            <h2>Completed Tasks</h2>
+            <ul id="completed-tasks"></ul>
+        </div>
+        <div>
+            <input type="text" id="task-input" placeholder="Enter a task">
+            <input type="date" id="task-date">
+            <input type="time" id="task-time">
+            <select id="task-priority">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <input type="text" id="task-labels" placeholder="Labels (e.g., Work, Personal)">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+        <button onclick="toggleCompletedTasks()">Show Completed Tasks</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

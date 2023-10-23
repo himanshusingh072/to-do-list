@@ -1,0 +1,57 @@
+function addTask() {
+    const taskText = document.getElementById("task-input").value;
+    const taskDate = document.getElementById("task-date").value;
+    const taskTime = document.getElementById("task-time").value;
+    const taskPriority = document.getElementById("task-priority").value;
+    const taskLabels = document.getElementById("task-labels").value;
+
+    if (taskText.trim() === "") {
+        alert("Please enter a task description.");
+        return;
+    }
+
+    const taskList = document.getElementById("pending-tasks");
+
+    const taskItem = document.createElement("li");
+    taskItem.className = "task";
+    taskItem.innerHTML = `
+        <div class="task-description">${taskText}</div>
+        <div class="task-priority">Priority: ${taskPriority}</div>
+        <div class="task-labels">Labels: ${taskLabels}</div>
+        <input type="checkbox" onchange="completeTask(this)">
+        <div class="date-time">${taskDate} ${taskTime}</div>
+        <button class="remove-button" onclick="removeTask(this)">Remove</button>
+    `;
+
+    taskList.appendChild(taskItem);
+
+    document.getElementById("task-input").value = "";
+    document.getElementById("task-date").value = "";
+    document.getElementById("task-time").value = "";
+    document.getElementById("task-priority").value = "High";
+    document.getElementById("task-labels").value = "";
+}
+
+function completeTask(checkbox) {
+    const taskItem = checkbox.parentNode;
+    const completedTasks = document.getElementById("completed-tasks");
+    if (checkbox.checked) {
+        completedTasks.appendChild(taskItem);
+    } else {
+        document.getElementById("pending-tasks").appendChild(taskItem);
+    }
+}
+
+function removeTask(button) {
+    const taskItem = button.parentNode;
+    taskItem.remove();
+}
+
+function toggleCompletedTasks() {
+    const completedTasks = document.querySelector('.completed');
+    if (completedTasks.style.display === 'none') {
+        completedTasks.style.display = 'block';
+    } else {
+        completedTasks.style.display = 'none';
+    }
+}
